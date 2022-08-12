@@ -1,3 +1,5 @@
+import java.util.InputMismatchException;
+import java.util.Scanner;
 
 public class main {
 	// bruteforcing method to find any pair in an array with given target sum
@@ -23,8 +25,44 @@ public class main {
 	}
 	
 	public static void main(String[] args) {
-		int[] nums = {1, 2, 3, 4, 5, 6, 7};
-		int target = 90;
+		int size = 0;
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Enter the size of the array you want: ");
+		
+		try {
+			size = sc.nextInt();
+		}
+		catch (InputMismatchException a) {
+			System.out.println("Integers only");
+		}
+		
+		if(size<=0) {
+			System.out.println("Positive numbers only");
+			return;
+		}
+		
+		
+		int[] nums = new int[size];
+		System.out.print("input " + size + " integers: ");
+		for(int i=0; i<size; i++) {
+			try {
+				nums[i] = sc.nextInt();
+			}
+			catch (InputMismatchException a) {
+				System.out.println("Integers only");
+			}
+		}
+		
+		
+		int target = 0;
+		System.out.print("Enter target: ");
+		try {
+			target = sc.nextInt();
+		}
+		catch (InputMismatchException a) {
+			System.out.println("Integers only");
+		}
+		
 		findPairBruteForce(nums, target);
 	}
 
