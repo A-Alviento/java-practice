@@ -25,26 +25,38 @@ public class main {
 	}
 	
 	public static void main(String[] args) {
+		// declares int for size of array
 		int size = 0;
+		// declares a scanner for taking input (reusable)
 		Scanner sc = new Scanner(System.in);
 		System.out.print("Enter the size of the array you want: ");
 		
+		// try-catch block to make sure user only inputs integers
 		try {
+			// takes int from user and assigns it to size
 			size = sc.nextInt();
 		}
-		catch (InputMismatchException a) {
+		catch (InputMismatchException a) { // catches the exception where user input something
+											// other than int
+			// if exception is raised, do this
 			System.out.println("Integers only");
 		}
 		
+		// if user does input integer but is negative, we catch this ourselves
 		if(size<=0) {
 			System.out.println("Positive numbers only");
-			return;
+			// terminate main program 
+			System.exit(0);
 		}
 		
-		
+		// declare an array of integer with the specified size
 		int[] nums = new int[size];
+		
 		System.out.print("input " + size + " integers: ");
+		
+		// gets size inputs of integers from user to put in array nums
 		for(int i=0; i<size; i++) {
+			// try-catch block to catch when user input something other than an integer
 			try {
 				nums[i] = sc.nextInt();
 			}
@@ -53,16 +65,20 @@ public class main {
 			}
 		}
 		
-		
+		// declare a target
 		int target = 0;
 		System.out.print("Enter target: ");
+		
+		// try-catch block to catch when user input something other than an integer
 		try {
+			// assigns input to target
 			target = sc.nextInt();
 		}
 		catch (InputMismatchException a) {
 			System.out.println("Integers only");
 		}
 		
+		// calls findPairBruteForce method
 		findPairBruteForce(nums, target);
 	}
 
